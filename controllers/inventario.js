@@ -1,3 +1,6 @@
+import inventarioModel from '../models/inventarios.js';
+
+
 class inventarioController{
     constructor(){
 
@@ -5,7 +8,8 @@ class inventarioController{
 
     async create(req,res){
         try{
-            res.status(201).json({status : 'ok'})
+            const data = inventarioModel.create(req.body);
+            res.status(201).json(data)
         }catch(e) {
             res.status(500).send(e);
         }
